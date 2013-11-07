@@ -110,6 +110,7 @@ class BasenameMeta(CompareMixin):
         return "<BasenameMeta name=%r version=%r>" %(self.name, self.version)
 
 def sorted_sameproject_links(links):
+    links = [link for link in links if getattr(link, "basename", link)]
     s = sorted((BasenameMeta(link, sameproject=True)
                      for link in links), reverse=True)
     return [x.obj for x in s]
