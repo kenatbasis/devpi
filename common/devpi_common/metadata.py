@@ -66,7 +66,7 @@ def splitbasename(path, checkarch=True):
     m = _releasefile_suffix_rx.search(non_projectname)
     assert m, (path, non_projectname)
     suffix = m.group(1)
-    version = non_projectname[:-len(suffix)]
+    version = non_projectname[:-len(suffix)].replace('_','-')
     return projectname, version, suffix
 
 DOCZIPSUFFIX = ".doc.zip"
